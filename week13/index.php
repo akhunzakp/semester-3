@@ -12,7 +12,7 @@
     <?php
     include('koneksi.php');
     $query = "SELECT * FROM anggota ORDER BY id DESC";
-    $result = mysqli_query($koneksi, $query);
+    $result = sqlsrv_query($conn, $query);
     ?>
     <table class="table">
         <thead class="thead-light">
@@ -28,7 +28,7 @@
         <tbody>
         <?php
         $no = 1;
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = sqlsrv_fetch_array($result)) {
             $kelamin = ($row["jenis_kelamin"] == 'L') ? 'Laki-Laki' : 'Perempuan';
         ?>
             <tr>
